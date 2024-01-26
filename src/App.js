@@ -1,20 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import FieldForm from './FieldForm';
+import FieldDisplay from './FieldDisplay';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <select className='main-dropdown'>
-          <option value="Student">Student</option>
-          <option value="Self-emplyeed">Self_employeed</option>
-          <option value="Business">Business</option>
-        </select>
-        <div className='btn-1'>
-          <button>Add Field</button>
-        </div>
+    <Provider store={store}>
+      <div className="App">
+        <FieldForm />
+        <FieldDisplay />
       </div>
-    </div>
+    </Provider>
   );
 }
 
