@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addField } from './actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addField, resetFields } from './actions';
 import './FieldForm.css';
 
 function FieldForm() {
-    const [fNo, setFNo] = useState(localStorage.getItem('fNo')||0);
-    const [fName, setFName] = useState(localStorage.getItem('fName') || '');
-    const [fType, setFType] = useState(localStorage.getItem('fType') || '');
-    const [fValidation, setFValidation] = useState(localStorage.getItem('fValidation') || '');
-    const [fData, setFData] = useState(localStorage.getItem('fData') || '');
-    const [fMan, setFMan] = useState(localStorage.getItem('fMan') || '');
-    const [field, setField] = useState(localStorage.getItem('field') || '');
-    const [selectedOption, setSelectedOption] = useState(localStorage.getItem('selectedOption') || '');
-    const [fieldTypeBtn, setFieldTypeBtn] = useState(localStorage.getItem('fieldTypeBtn') === 'true');
+    const [fNo, setFNo] = useState(useSelector(state => state.fNo) || 0);
+    const [fName, setFName] = useState(useSelector(state => state.fName) || '');
+    const [fType, setFType] = useState(useSelector(state => state.fType) || '');
+    const [fValidation, setFValidation] = useState(useSelector(state => state.fValidation) || '');
+    const [fData, setFData] = useState(useSelector(state => state.fData) || '');
+    const [fMan, setFMan] = useState(useSelector(state => state.fMan) || '');
+    const [field, setField] = useState(useSelector(state => state.field) || '');
+    const [selectedOption, setSelectedOption] = useState(useSelector(state => state.selectedOption) || '');
+    const [fieldTypeBtn, setFieldTypeBtn] = useState(useSelector(state => state.fieldTypeBtn) || false);
 
     const dispatch = useDispatch();
 
@@ -30,19 +30,19 @@ function FieldForm() {
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
-        localStorage.setItem('selectedOption', e.target.value);
         setFName('');
         setFType('');
         setFValidation('');
         setFData('');
         setFMan('');
+        setField('');
     };
 
     const handleAddField = () => {
         if ((fNo < 4) && (selectedOption === "Student" || selectedOption === "Self-Employee" || selectedOption === "Business")) {
             setFieldTypeBtn(true);
         } else if (fNo > 4) {
-            alert("Only 4 fields allowed");
+            alert("Only 4 fields allowed, reset if you want to clear all data and add new");
         } else {
             alert("Select an option");
         }
@@ -55,27 +55,37 @@ function FieldForm() {
         setFData('');
         setFMan('');
         setField(e.target.value);
-        localStorage.setItem('field', e.target.value);
     };
 
     const handleConfirm = () => {
-        setFNo(localStorage.getItem('fNo')+1);
-        console.log(fName + " " + fType + " " + fValidation + " " + fMan + " " + fData)
+        setFNo(fNo + 1);
+        console.log(fNo + " " + fName + " " + fType + " " + fValidation + " " + fMan + " " + fData)
         if (fNo <= 4)
-            dispatch(addField(fNo, fName, fType, fValidation, fMan, fData));
+            dispatch(addField({
+                fNo,
+                fName,
+                fType,
+                fValidation,
+                fData,
+                fMan,
+                field,
+                selectedOption,
+            }));
         else
-            alert("Only 4 fields allowed");
-        console.log(localStorage.getItem('FName'));
+            alert("Only 4 fields allowed, reset if you want to clear all data and add new");
     };
 
-    const handleReset = ()=>{
+    const handleReset = () => {
         setFName('');
         setFType('');
         setFValidation('');
         setFData('');
         setFMan('');
         setField('');
-        localStorage.clear();
+        setField('');
+        setFieldTypeBtn(false);
+        dispatch(resetFields());
+
     }
 
     return (
@@ -180,9 +190,9 @@ function FieldForm() {
                 }
 
                 {(field === 'textbox' || field === 'dropdown' || field === 'date') &&
-                <div>
-                    <button onClick={handleConfirm}>Confirm</button>
-                    <button onClick={handleReset}>Reset</button>
+                    <div>
+                        <button onClick={handleConfirm}>Confirm</button>
+                        <button onClick={handleReset}>Reset</button>
                     </div>
                 }
             </div>

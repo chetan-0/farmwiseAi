@@ -1,5 +1,11 @@
-export const addField = (fNo, fName, fType, fValidation, fMan, fData) => ({
-    type: 'ADD_FIELD',
-    payload: { fNo, fName, fType, fValidation, fMan, fData  },
+export const addField = (field) => {
+    return {
+      type: 'ADD_FIELD',
+      payload: field,
+    };
+  };
+
+  export const resetFields = () => ({
+    type: 'RESET_FIELDS',
   });
   
