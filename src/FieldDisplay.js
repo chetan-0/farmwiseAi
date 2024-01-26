@@ -6,11 +6,10 @@ function FieldDisplay() {
 
   return (
     <div>
-      <h2>Field Display</h2>
       <ul>
         {fields.map((field, index) => (
           <li key={index}>
-            <strong>{field.fieldName}</strong>: {field.fieldType}
+            {field.fNo}: {field.fName}: {field.fType} : {field.fValidation}: {field.fMan}: {field.fData}
           </li>
         ))}
       </ul>

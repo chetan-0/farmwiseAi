@@ -1,5 +1,5 @@
-export const addField = (fieldName, fieldType, fieldValidation, fieldData) => ({
+export const addField = (fNo, fName, fType, fValidation, fMan, fData) => ({
     type: 'ADD_FIELD',
-    payload: { fieldName, fieldType, fieldValidation, fieldData },
+    payload: { fNo, fName, fType, fValidation, fMan, fData  },
   });
   
