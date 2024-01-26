@@ -4,7 +4,7 @@ import { addField, resetFields } from './actions';
 import './FieldForm.css';
 
 function FieldForm() {
-    const [fNo, setFNo] = useState(useSelector(state => state.fNo) || 0);
+    const [fNo, setFNo] = useState(useSelector(state => state.fNo) || 1);
     const [fName, setFName] = useState(useSelector(state => state.fName) || '');
     const [fType, setFType] = useState(useSelector(state => state.fType) || '');
     const [fValidation, setFValidation] = useState(useSelector(state => state.fValidation) || '');
@@ -17,7 +17,7 @@ function FieldForm() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setFNo(localStorage.getItem('fNo') || 0);
+        setFNo(localStorage.getItem('fNo') || 1);
         setFName(localStorage.getItem('fName') || '');
         setFType(localStorage.getItem('fType') || '');
         setFValidation(localStorage.getItem('fValidation') || '');
@@ -59,7 +59,7 @@ function FieldForm() {
 
     const handleConfirm = () => {
         setFNo(fNo + 1);
-        console.log(fNo + " " + fName + " " + fType + " " + fValidation + " " + fMan + " " + fData)
+        // console.log(fNo + " " + fName + " " + fType + " " + fValidation + " " + fMan + " " + fData)
         if (fNo <= 4)
             dispatch(addField({
                 fNo,
