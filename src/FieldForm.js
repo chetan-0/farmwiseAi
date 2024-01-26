@@ -8,7 +8,7 @@ function FieldForm() {
     const [fName, setFName] = useState(useSelector(state => state.fName) || '');
     const [fType, setFType] = useState(useSelector(state => state.fType) || '');
     const [fValidation, setFValidation] = useState(useSelector(state => state.fValidation) || '');
-    const [fData, setFData] = useState(useSelector(state => state.fData) || '');
+    const [fData, setFData] = useState(useSelector(state => state.fData) || []);
     const [fMan, setFMan] = useState(useSelector(state => state.fMan) || '');
     const [field, setField] = useState(useSelector(state => state.field) || '');
     const [selectedOption, setSelectedOption] = useState(useSelector(state => state.selectedOption) || '');
@@ -135,7 +135,7 @@ function FieldForm() {
                                 <option value='no'>No</option>
                             </select>
                             <label>Field Data: </label>
-                            <input type='text' value={fData} onChange={(e) => setFData(e.target.value)} />
+                            <input type='text' value={fData} onChange={(e) => setFData(e.target.value.split("\n"))} />
                         </div>
                     }
 
@@ -175,7 +175,7 @@ function FieldForm() {
                                 <option value='date'>Date</option>
                             </select>
                             <label>Min Date: </label>
-                            <input type='date' onChange={(e) => setFValidation(e.target.value + " to")} />
+                            <input type='date' onChange={(e) => setFValidation(e.target.value + " to ")} />
                             <label>Max Date: </label>
                             <input type='date' onChange={(e) => setFValidation(fValidation + e.target.value)} />
                             <label>Mandatory: </label>

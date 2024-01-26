@@ -13,7 +13,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <div className="App">
           <FieldForm />
-          <FieldDisplay />
+          <FieldDisplay /><br/>
           <DynamicFields/>
         </div>
       </PersistGate>
