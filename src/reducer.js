@@ -1,5 +1,3 @@
-// reducer.js
-
 const initialState = {
     fields: [],
   };

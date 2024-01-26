@@ -5,6 +5,7 @@ import { store, persistor } from './store';
 import FieldForm from './FieldForm';
 import FieldDisplay from './FieldDisplay';
 import './App.css';
+import DynamicFields from './DynamicFields';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div className="App">
           <FieldForm />
           <FieldDisplay />
+          <DynamicFields/>
         </div>
       </PersistGate>
     </Provider>

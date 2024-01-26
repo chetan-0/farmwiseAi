@@ -115,79 +115,79 @@ function FieldForm() {
                     </div>
                 }
 
-                {field === "textbox" &&
-                    <div className='fields'>
-                        <label>Field Display Name: </label>
-                        <input type='text' value={fName} onChange={(e) => setFName(e.target.value)} />
-                        <label>Field Data Type: </label>
-                        <select value={fType} onChange={(e) => setFType(e.target.value)}>
-                            <option disabled value=''>Select</option>
-                            <option value='number'>Number</option>
-                            <option value='string'>String</option>
-                            <option value='date'>Date</option>
-                        </select>
-                        <label>Field Max Length Allowed: </label>
-                        <input type='number' value={fValidation} onChange={(e) => setFValidation(e.target.value)} />
-                        <label>Mandatory: </label>
-                        <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
-                            <option value='' disabled>Select</option>
-                            <option value='yes'>Yes</option>
-                            <option value='no'>No</option>
-                        </select>
-                        <label>Field Data: </label>
-                        <input type='text' value={fData} onChange={(e) => setFData(e.target.value)} />
-                    </div>
-                }
+                    {field === "textbox" &&
+                        <div className='fields'>
+                            <label>Field Display Name: </label>
+                            <input type='text' value={fName} onChange={(e) => setFName(e.target.value)} />
+                            <label>Field Data Type: </label>
+                            <select value={fType} onChange={(e) => setFType(e.target.value)}>
+                                <option disabled value=''>Select</option>
+                                <option value='number'>Number</option>
+                                <option value='string'>String</option>
+                                <option value='date'>Date</option>
+                            </select>
+                            <label>Field Max Length Allowed: </label>
+                            <input type='number' value={fValidation} onChange={(e) => setFValidation(e.target.value)} />
+                            <label>Mandatory: </label>
+                            <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
+                                <option value='' disabled>Select</option>
+                                <option value='yes'>Yes</option>
+                                <option value='no'>No</option>
+                            </select>
+                            <label>Field Data: </label>
+                            <input type='text' value={fData} onChange={(e) => setFData(e.target.value)} />
+                        </div>
+                    }
 
-                {field === "dropdown" &&
-                    <div className='fields'>
-                        <label>Field Display Name: </label>
-                        <input type='text' value={fName} onChange={(e) => { setFName(e.target.value); setFValidation('Nil') }} />
-                        <label>Field Data Type: </label>
-                        <select value={fType} onChange={(e) => setFType(e.target.value)}>
-                            <option value='' disabled>Select</option>
-                            <option value='number'>Number</option>
-                            <option value='string'>String</option>
-                            <option value='date'>Date</option>
-                        </select>
-                        <label>Field Validation: </label>
-                        <input type='text' disabled value='Nil' />
-                        <label>Mandatory: </label>
-                        <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
-                            <option value='' disabled>Select</option>
-                            <option value='yes'>Yes</option>
-                            <option value='no'>No</option>
-                        </select>
-                        <label>Field Data: </label>
-                        <textarea value={fData} onChange={(e) => setFData(e.target.value)} />
-                    </div>
-                }
+                    {field === "dropdown" &&
+                        <div className='fields'>
+                            <label>Field Display Name: </label>
+                            <input type='text' value={fName} onChange={(e) => { setFName(e.target.value); setFValidation('Nil') }} />
+                            <label>Field Data Type: </label>
+                            <select value={fType} onChange={(e) => setFType(e.target.value)}>
+                                <option value='' disabled>Select</option>
+                                <option value='number'>Number</option>
+                                <option value='string'>String</option>
+                                <option value='date'>Date</option>
+                            </select>
+                            <label>Field Validation: </label>
+                            <input type='text' disabled value='Nil' />
+                            <label>Mandatory: </label>
+                            <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
+                                <option value='' disabled>Select</option>
+                                <option value='yes'>Yes</option>
+                                <option value='no'>No</option>
+                            </select>
+                            <label>Field Data: </label>
+                            <textarea value={fData} onChange={(e) => setFData(e.target.value)} />
+                        </div>
+                    }
 
-                {field === "date" &&
-                    <div className='fields'>
-                        <label>Field Display Name: </label>
-                        <input type='text' value={fName} onChange={(e) => setFName(e.target.value)} />
-                        <label>Field Data Type: </label>
-                        <select value={fType} onChange={(e) => setFType(e.target.value)}>
-                            <option value='' disabled>Select</option>
-                            <option value='number'>Number</option>
-                            <option value='string'>String</option>
-                            <option value='date'>Date</option>
-                        </select>
-                        <label>Min Date: </label>
-                        <input type='date' onChange={(e) => setFValidation(e.target.value + " to")} />
-                        <label>Max Date: </label>
-                        <input type='date' onChange={(e) => setFValidation(fValidation + e.target.value)} />
-                        <label>Mandatory: </label>
-                        <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
-                            <option value='' disabled>Select</option>
-                            <option value='yes'>Yes</option>
-                            <option value='no'>No</option>
-                        </select>
-                        <label>Field Data: </label>
-                        <input type='text' value={fData} onChange={(e) => setFData(e.target.value)} />
-                    </div>
-                }
+                    {field === "date" &&
+                        <div className='fields'>
+                            <label>Field Display Name: </label>
+                            <input type='text' value={fName} onChange={(e) => setFName(e.target.value)} />
+                            <label>Field Data Type: </label>
+                            <select value={fType} onChange={(e) => setFType(e.target.value)}>
+                                <option value='' disabled>Select</option>
+                                <option value='number'>Number</option>
+                                <option value='string'>String</option>
+                                <option value='date'>Date</option>
+                            </select>
+                            <label>Min Date: </label>
+                            <input type='date' onChange={(e) => setFValidation(e.target.value + " to")} />
+                            <label>Max Date: </label>
+                            <input type='date' onChange={(e) => setFValidation(fValidation + e.target.value)} />
+                            <label>Mandatory: </label>
+                            <select value={fMan} onChange={(e) => setFMan(e.target.value)}>
+                                <option value='' disabled>Select</option>
+                                <option value='yes'>Yes</option>
+                                <option value='no'>No</option>
+                            </select>
+                            <label>Field Data: </label>
+                            <input type='text' value={fData} onChange={(e) => setFData(e.target.value)} />
+                        </div>
+                    }
 
                 {(field === 'textbox' || field === 'dropdown' || field === 'date') &&
                     <div>
